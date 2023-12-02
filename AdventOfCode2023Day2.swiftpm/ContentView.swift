@@ -5,17 +5,21 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Text("Sum = \(viewModel.games.getSumValidGameIDs())")
+            // STAR 1
+//            Text("Sum = \(viewModel.games.getSumValidGameIDs())")
+//            
+//            ScrollView {
+//                ForEach(viewModel.games) { game in
+//                    HStack {
+//                        Text("GAME ID: \(game.id)")
+//                        Spacer()
+//                        Text("Under Limit: \(game.isGameUnderDiceLimit().description)")
+//                    }
+//                }
+//            }
             
-            ScrollView {
-                ForEach(viewModel.games) { game in
-                    HStack {
-                        Text("GAME ID: \(game.id)")
-                        Spacer()
-                        Text("Under Limit: \(game.isGameUnderDiceLimit().description)")
-                    }
-                }
-            }
+            // STAR 2
+            Text("Sum Powers = \(viewModel.games.getSumOfPowers())")
         }.onAppear {
             viewModel.loadData()
         }.padding()

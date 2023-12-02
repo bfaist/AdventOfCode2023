@@ -21,10 +21,16 @@ class CalibrationDataLoader {
         var calibrationData: [CalibrationDataModel] = []
         
         for line in lines {
-            if let firstIndex = line.firstIndex(where: { $0.isNumber }),
-               let lastIndex = line.lastIndex(where: { $0.isNumber }),
-               let firstDigit = line[firstIndex].wholeNumberValue,
-               let lastDigit = line[lastIndex].wholeNumberValue {
+            var copyLine = line
+            for digitType in TextDigit.allCases {
+                copyLine = copyLine.replacingOccurrences(of: digitType.rawValue,
+                                                         with: digitType.substitute)
+            }
+            
+            if let firstIndex = copyLine.firstIndex(where: { $0.isNumber }),
+               let lastIndex = copyLine.lastIndex(where: { $0.isNumber }),
+               let firstDigit = copyLine[firstIndex].wholeNumberValue,
+               let lastDigit = copyLine[lastIndex].wholeNumberValue {
                 
                 let newDataModel =
                     CalibrationDataModel(input: line,

@@ -5,24 +5,30 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Text("Sum of Part Numbers: \(viewModel.partNumberSum)")
-            ScrollView {
-                ForEach(viewModel.schematicItems) { item in
-                    HStack {
-                        Text("\(item.type.value)")
-                        Spacer()
-                        Text("\(item.row)")
-                        Spacer()
-                        Text("\(item.startCol)")
-                        Spacer()
-                        Text("\(item.endCol)")
-                    }
-                }
-            }
+            // Star 1
+//            Text("Sum of Part Numbers: \(viewModel.partNumberSum)")
+//            ScrollView {
+//                ForEach(viewModel.schematicItems) { item in
+//                    HStack {
+//                        Text("\(item.type.value)")
+//                        Spacer()
+//                        Text("\(item.row)")
+//                        Spacer()
+//                        Text("\(item.startCol)")
+//                        Spacer()
+//                        Text("\(item.endCol)")
+//                    }
+//                }
+            
+              // Star 2
+            Text("Gear Ratios: \(viewModel.gearRatioSum)")
         }.padding()
             .onAppear {
                 Task {
-                    await viewModel.loadData()
+                    // STAR 1
+                    // await viewModel.loadDataTask1()
+                    // STAR 2
+                    await viewModel.loadDataTask2()
                 }
             }
     }
